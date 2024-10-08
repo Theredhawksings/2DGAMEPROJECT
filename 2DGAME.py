@@ -15,7 +15,7 @@ class Grass:
 
 class Boy:
     def __init__(self):
-        self.x, self.y = random.randint(0, 700), 90
+        self.x, self.y = random.randint(50, 100), 100
         self.frame = 0
         self.image = load_image('run_animation1.png')
         self.dx, self.dy = 0, 0
@@ -23,8 +23,8 @@ class Boy:
         self.right = True
         self.is_jumping = False
         self.jump_speed = 0
-        self.gravity = -0.5
-        self.ground_y = 90
+        self.gravity = -0.7
+        self.ground_y = 100
 
     def update(self):
         if self.dx != 0 or self.dy != 0:
@@ -69,13 +69,13 @@ def reset_world():
 def update_boy_movement():
     boy.dx, boy.dy = 0, 0
     if key_states['d']:
-        boy.dx += 5
+        boy.dx += 7
         boy.right = True
     if key_states['a']:
-        boy.dx -= 5
+        boy.dx -= 7
         boy.right = False
-    if key_states['w'] and not boy.is_jumping: boy.dy += 5
-    if key_states['s'] and not boy.is_jumping: boy.dy -= 5
+    if key_states['w'] and not boy.is_jumping: boy.dy += 7
+    if key_states['s'] and not boy.is_jumping: boy.dy -= 7
     if key_states['space']:
         boy.jump()
 
