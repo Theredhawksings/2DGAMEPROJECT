@@ -10,7 +10,7 @@ class Boy:
         self.image = load_image('run_animation1.png')
         self.dx, self.dy = 0, 0
         self.stop = True
-
+        self.right = True
     def update(self):
 
         if self.dx != 0 or self.dy != 0:
@@ -20,7 +20,12 @@ class Boy:
         self.y += self.dy
 
     def draw(self):
-        self.image.clip_draw(self.frame*64, 64, 64, 64, self.x, self.y, 128,128)
+
+        if self.right == True:
+            self.image.clip_draw(self.frame*64, 64, 64, 64, self.x, self.y, 128,128)
+
+        elif self.right == False:
+            self.image.clip_draw(self.frame*64, 128, 64, 64, self.x, self.y, 128,128)
 
     def move(self,dx,dy):
         self.dx, self.dy = dx, dy
@@ -49,14 +54,14 @@ def handle_events():
             running = False
         elif event.type == SDL_KEYDOWN and event.key == SDLK_w:
             boy.move(0, 5)
-        elif event.type == SDL_KEYDOWN and event.key == SDLK_w:
-            boy.move(0, 5)
         elif event.type == SDL_KEYDOWN and event.key == SDLK_s:
             boy.move(0, -5)
         elif event.type == SDL_KEYDOWN and event.key == SDLK_a:
             boy.move(-5, 0)
+            boy.right = False
         elif event.type == SDL_KEYDOWN and event.key == SDLK_d:
             boy.move(5, 0)
+            boy.right = True
         elif event.type == SDL_KEYUP:
             if event.key in [SDLK_w, SDLK_s, SDLK_a, SDLK_d]:
                 boy.move(0, 0)
