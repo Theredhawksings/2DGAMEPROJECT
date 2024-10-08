@@ -9,9 +9,13 @@ class Boy:
         self.frame = 0
         self.image = load_image('run_animation1.png')
         self.dx, self.dy = 0, 0
+        self.stop = True
 
     def update(self):
-        self.frame = (self.frame+1)%3
+
+        if self.stop == True :
+            self.frame = (self.frame+1)%3
+
         self.x += self.dx
         self.y += self.dy
 
@@ -45,15 +49,23 @@ def handle_events():
             running = False
         elif event.type == SDL_KEYDOWN and event.key == SDLK_w:
             boy.move(0, 5)
+            boy.stop = True
         elif event.type == SDL_KEYDOWN and event.key == SDLK_w:
             boy.move(0, 5)
+            boy.stop = True
         elif event.type == SDL_KEYDOWN and event.key == SDLK_s:
             boy.move(0, -5)
+            boy.stop = True
         elif event.type == SDL_KEYDOWN and event.key == SDLK_a:
             boy.move(-5, 0)
+            boy.stop = True
         elif event.type == SDL_KEYDOWN and event.key == SDLK_d:
             boy.move(5, 0)
-            
+            boy.stop = True
+        elif event.type == SDL_KEYUP:
+            if event.key in [SDLK_w, SDLK_s, SDLK_a, SDLK_d]:
+                boy.move(0, 0)
+                boy.stop = False
 
 open_canvas()
 
