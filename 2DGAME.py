@@ -13,7 +13,7 @@ class Boy:
 
     def update(self):
 
-        if self.stop == True :
+        if self.dx != 0 or self.dy != 0:
             self.frame = (self.frame+1)%3
 
         self.x += self.dx
@@ -49,23 +49,18 @@ def handle_events():
             running = False
         elif event.type == SDL_KEYDOWN and event.key == SDLK_w:
             boy.move(0, 5)
-            boy.stop = True
         elif event.type == SDL_KEYDOWN and event.key == SDLK_w:
             boy.move(0, 5)
-            boy.stop = True
         elif event.type == SDL_KEYDOWN and event.key == SDLK_s:
             boy.move(0, -5)
-            boy.stop = True
         elif event.type == SDL_KEYDOWN and event.key == SDLK_a:
             boy.move(-5, 0)
-            boy.stop = True
         elif event.type == SDL_KEYDOWN and event.key == SDLK_d:
             boy.move(5, 0)
-            boy.stop = True
         elif event.type == SDL_KEYUP:
             if event.key in [SDLK_w, SDLK_s, SDLK_a, SDLK_d]:
                 boy.move(0, 0)
-                boy.stop = False
+
 
 open_canvas()
 
