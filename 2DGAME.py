@@ -35,6 +35,7 @@ class Boy:
         if self.is_jumping:
             self.y += self.jump_speed
             self.jump_speed += self.gravity
+
             if self.y <= self.ground_y:
                 self.y = self.ground_y
                 self.is_jumping = False
@@ -54,7 +55,7 @@ class Boy:
     def jump(self):
         if not self.is_jumping:
             self.is_jumping = True
-            self.jump_speed = 12  # 점프 초기 속도
+            self.jump_speed = 10
 
 
 def reset_world():
