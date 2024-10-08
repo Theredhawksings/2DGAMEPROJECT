@@ -45,6 +45,15 @@ def handle_events():
             running = False
         elif event.type == SDL_KEYDOWN and event.key == SDLK_w:
             boy.move(0, 5)
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_w:
+            boy.move(0, 5)
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_s:
+            boy.move(0, -5)
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_a:
+            boy.move(-5, 0)
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_d:
+            boy.move(5, 0)
+            
 
 open_canvas()
 
