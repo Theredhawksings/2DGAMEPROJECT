@@ -73,19 +73,17 @@ def reset_world():
     grass = Grass()
     ground = Ground()
     running = True
-    key_states = {'w': False, 'a': False, 's': False, 'd': False, 'space': False}
+    key_states = {'left': False, 'right': False, 'space': False}
 
 
 def update_boy_movement():
     boy.dx, boy.dy = 0, 0
-    if key_states['d']:
+    if key_states['right']:
         boy.dx += 7
         boy.right = True
-    if key_states['a']:
+    if key_states['left']:
         boy.dx -= 7
         boy.right = False
-    if key_states['w'] and not boy.is_jumping: boy.dy += 7
-    if key_states['s'] and not boy.is_jumping: boy.dy -= 7
     if key_states['space']:
         boy.jump()
 
@@ -114,20 +112,19 @@ def handle_events():
         elif event.type == SDL_KEYDOWN:
             if event.key == SDLK_ESCAPE:
                 running = False
-            elif event.key == SDLK_a:
-                key_states['a'] = True
-            elif event.key == SDLK_d:
-                key_states['d'] = True
+            elif event.key == SDLK_LEFT:
+                key_states['left'] = True
+            elif event.key == SDLK_RIGHT:
+                key_states['right'] = True
             elif event.key == SDLK_SPACE:
                 key_states['space'] = True
         elif event.type == SDL_KEYUP:
-            if event.key == SDLK_a:
-                key_states['a'] = False
-            elif event.key == SDLK_d:
-                key_states['d'] = False
+            if event.key == SDLK_LEFT:
+                key_states['left'] = False
+            elif event.key == SDLK_RIGHT:
+                key_states['right'] = False
             elif event.key == SDLK_SPACE:
                 key_states['space'] = False
-
 
 open_canvas(800, 600)
 
