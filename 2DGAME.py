@@ -3,6 +3,7 @@ import random
 import pygame
 
 pygame.init()
+pygame.mixer.init()
 
 class Ground:
     def __init__(self):
@@ -77,7 +78,8 @@ def reset_world():
     ground = Ground()
     running = True
     key_states = {'left': False, 'right': False, 'space': False}
-
+    pygame.mixer.music.load("Kirby_Sky_High.mp3")
+    pygame.mixer.music.play(-1)
 
 def update_boy_movement():
     boy.dx, boy.dy = 0, 0
@@ -132,8 +134,7 @@ def handle_events():
 open_canvas(800, 600)
 
 reset_world()
-test_sound = pygame.mixer.Sound("Kirby_Sky_High.mp3")
-test_sound.play()
+
 
 while running:
     handle_events()
