@@ -1,5 +1,8 @@
 from pico2d import *
 import random
+import pygame
+
+pygame.init()
 
 class Ground:
     def __init__(self):
@@ -129,6 +132,8 @@ def handle_events():
 open_canvas(800, 600)
 
 reset_world()
+test_sound = pygame.mixer.Sound("Kirby_Sky_High.mp3")
+test_sound.play()
 
 while running:
     handle_events()
